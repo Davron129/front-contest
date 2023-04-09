@@ -41,7 +41,7 @@ function remove(field) {
  * 
  * @param  {"easy" | "medium" | "hard"} level 
  */
-export function getWordsByLevel(level) {
+export function getQuestionsByLevel(level) {
     const questions = data.filter((question) => question.level === level);
     const questionsAmount = questions.length;
 
@@ -55,7 +55,10 @@ export function getWordsByLevel(level) {
         }
     }
 
-    const result = Object.values(randomTenQuestions);
+    const result = Object.values(randomTenQuestions).map((question) => ({
+        en: question.words[0],
+        uz: question.words[1],
+    }));
 
     return result;
 }
@@ -121,7 +124,11 @@ export function handleLogin(username, password) {
 export function isLogged() {
     const curUser = get(CUR_USER, false);
 
-    return curUser
+    if(Array.isArray(curUser)) {
+        return curUser[0];
+    }
+
+    return curUser;
 }
 
 /**
@@ -132,13 +139,12 @@ export function isLogged() {
  * @returns 
  */
 export function handleRegister(name, username, password) {
-    const isExists = handleLogin(username, password);
+    const users = get(USERS);
+    const isExists = users.filter((user) => user.username === username).length > 0;
 
-    if(!isExists) {
+    if(isExists) {
         return false;
     }
-
-    const users = get(USERS);
 
     const curUser = {
         name,
@@ -149,6 +155,7 @@ export function handleRegister(name, username, password) {
     users.push(curUser)
 
     set(CUR_USER, users);
+    console.log(get(CUR_USER))
 
     return true;
 }

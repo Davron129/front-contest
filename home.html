@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/assets/styles/global.css">
+    <link rel="stylesheet" href="./src/assets/styles/home.css">
+    <title>Home</title>
+</head>
+<body>
+    <div class="wrapper">
+        <aside class="sidebar">
+            <div class="sidebar__logo">
+                Logo
+            </div>
+            <nav class="sidebar__nav">
+                <ul class="sidebar__menu">
+                    <li class="sidebar__item">
+                        <a href="#" class="sidebar__link sidebar__link-active">HOME</a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a href="#" class="sidebar__link">LEADERBOARD</a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a href="#" class="sidebar__link">TEST</a>
+                    </li>
+                    <li class="sidebar__item">
+                        <a href="#" class="sidebar__link">LOGOUT</a>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+        <main>
+            <header class="header">
+                <div class="header__info">
+                    <div class="avatar">
+                        <img src="./src/assets/img/kangaroo.png" alt="User avatar">
+                    </div>
+                    <div class="user__info" id="userInfo" ></div>
+                </div>
+            </header>
+        </main>
+    </div>
+</body>
+<script type="module">
+    'use strict'
+    import { isLogged, handleLogin, handleRegister } from './src/scripts/test.js';
+
+    handleRegister("Davron Normo'minov", "davron129", "pwd")
+    handleLogin("davron129", "pwd");
+
+    const user = isLogged();
+
+    const userInfo = document.getElementById('userInfo');
+    userInfo.innerText = user.name 
+
+</script>
+</html>
