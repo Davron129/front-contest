@@ -11,14 +11,29 @@
 </head>
 
 <body>
+  <div class="form_error hidden">Something went wrong!</div>
   <form class="register_form">
     <div class="svgContainer">
-      <lord-icon src="https://cdn.lordicon.com/dxjqoygy.json" trigger="hover" style="width:170px;height:170px"></lord-icon>
+      <lord-icon 
+        class="login_icon"
+        src="https://cdn.lordicon.com/dxjqoygy.json"
+        trigger="hover"
+        style="width:170px;height:170px">
+      </lord-icon>
+      <lord-icon
+        class="error_icon hidden"
+        src="https://cdn.lordicon.com/tdrtiskw.json"
+        trigger="loop"
+        delay="2000"
+        colors="primary:#121331,secondary:#08a385"
+        state="hover-2"
+        style="width:170px;height:170px">
+      </lord-icon>
     </div>
 
     <div class="inputGroup name_input">
       <label for="name" id="nameLabel">Name</label>
-      <input type="text" id="name" maxlength="254" placeholder=" " required />
+      <input type="text" id="name" maxlength="254" placeholder=" " />
     </div>
     <div class="inputGroup">
       <label for="userName" id="userNameLabel">Username</label>
@@ -32,25 +47,58 @@
         <input id="showPasswordCheck" type="checkbox" />
       </label>
     </div>
-    <button id="login" class="btn btn--blue" type="submit">Log in</button>
-    <button id="register" class="btn btn--blue" type="submit">Register</button>
+    <div class="formButtons">
+      <button id="login" class="btn btn--blue" type="submit">Log in</button>
+      <a href="#!" class="login_btn btn btn--blue">Log in</a>
+      <button id="register" class="btn btn--blue" type="submit">Register</button>
+    </div>
   </form>
 
   <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
   <script type="module">
-    import { handleLogin, isLogged } from "./src/scripts/test.js";
+    import { handleLogin, handleRegister, isLogged } from "./src/scripts/test.js";
     let form = document.querySelector("form");
-    if(isLogged()){
+    let is_logged = isLogged();
+    if(is_logged){
       form.setAttribute("class", "login_form");
     }
     form.addEventListener("submit", e=>{
       e.preventDefault();
-      let name = form.querySelector("#name");
-      let username = form.querySelector("#userName");
-      let pass = form.querySelector("#password");
+      let name = form.querySelector("#name").value;
+      let username = form.querySelector("#userName").value;
+      let pass = form.querySelector("#loginPassword").value;
+      if (form.classList.contains("login_form")) {
+        console.log(username, pass)
+        let log = handleLogin(username, pass);
+        if (!log) {
+          document.querySelector(".error_icon").classList.remove("hidden");
+          document.querySelector(".login_icon").classList.add("hidden");
+          document.querySelector(".form_error").textContent = "Incorrect username or password";
+          document.querySelector(".form_error").classList.remove("hidden");
+          setTimeout(()=>{
+            document.querySelector(".form_error").classList.add("hidden");
+          }, 3000);
+          return;
+        }
+      }else{
+        let reg = handleRegister(name, username, pass);
+        if(!reg){
+          document.querySelector(".error_icon").classList.remove("hidden");
+          document.querySelector(".login_icon").classList.add("hidden");
+          document.querySelector(".form_error").textContent = "Username already exists";
+          document.querySelector(".form_error").classList.remove("hidden");
+          setTimeout(()=>{
+            document.querySelector(".form_error").classList.add("hidden");
+          }, 3000);
+          return;
+        }
+      }
+      window.location.href = "/";
     });
-    console.log(handleLogin("test", "test"));
-
+    document.querySelector(".login_btn").addEventListener("click", e=>{
+      e.preventDefault()
+      form.setAttribute("class", "login_form");
+    })
   </script>
 </body>
 
