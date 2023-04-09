@@ -6,27 +6,31 @@
 }
 
 .answerBtn {
-  padding: 10px 20px;
-  border: 1px solid;
-  user-select: none;
-  cursor: pointer;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 60px;
+    padding: 10px 20px;
+    border: 1px solid;
+    user-select: none;
+    cursor: pointer;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60px;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 32px;
+    border-radius: 20px;
 }
 
 .answerBtn.selected {
-  background: #000;
-  color: bisque;
+    border: 10px solid #0077b6;
+    color: #0077b6;
 }
 
 .answerBtn.disabled {
-  background: green;
-  color: bisque;
-  pointer-events: none;
-  cursor: not-allowed;
+    border: 10px solid #9e9e9e;
+    color: #9e9e9e;
+    pointer-events: none;
+    cursor: not-allowed;
 }
 .modal {
   display: none; /* Hidden by default */
@@ -41,7 +45,15 @@
   background-color: rgb(0, 0, 0); /* Fallback color */
   background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
-
+.timeframe .icon lord-icon{
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    animation: move 40s linear forwards;
+    animation-delay: 1s;
+    transform: translate(-50%, 0);
+    transition: 0.3s;
+}
 /* Modal Content */
 .modal-content {
   width: 50%;
@@ -53,15 +65,29 @@
 }
 
 /* The Close Button */
-.close {
+.resultClose {
   color: #aaaaaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+.resultClose:hover,
+.resultClose:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.levelClose {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.levelClose:hover,
+.levelClose:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
@@ -72,27 +98,26 @@
   height: 80%;
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
 }
 
 .leaderboard__level {
-  margin-top: 60px;
-  margin-bottom: 40px;
   text-align: center;
-  font-size: 30px;
+  font-size: 50px;
   color: gray;
 }
 
 .leaderboard__btn__list {
   display: flex;
   justify-content: center;
-  gap: 20px;
+  gap: 30px;
 }
 
 .leaderboard__btn {
-  padding: 12px 48px;
+  padding: 20px 48px;
   border: none;
   color: white;
-  font-size: 20px;
+  font-size: 34px;
 }
 
 #easy-button {
@@ -124,7 +149,6 @@
 #hard-button:active:after {
   box-shadow: 0 0 0 0 var(--btnRed);
 }
-
 .timeframe {
   position: relative;
   padding-top: 50px;
@@ -162,4 +186,20 @@
   100% {
     left: 97%;
   }
+}
+
+#score {
+  font-size: 120px;
+  font-weight: 700;
+  color: gray;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.result-content {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }

@@ -129,10 +129,6 @@ export const data = [
     },
     {
         "level": "easy",
-        "words":  ["Old", "Qari"]
-    },
-    {
-        "level": "easy",
         "words":  ["Young", "Yosh"]
     },
     {
