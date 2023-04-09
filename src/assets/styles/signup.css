@@ -5,7 +5,7 @@ form {
   transform: translate(-50%, -50%);
   display: block;
   width: 100%;
-  max-width: 400px;
+  max-width: 500px;
   background-color: #FFF;
   margin: 0;
   padding: 2.25em;
@@ -13,6 +13,11 @@ form {
   border: solid 1px #DDD;
   border-radius: .5em;
   font-family: inherit;
+}
+
+.svgContainer{
+  display: flex;
+  justify-content: center;
 }
 
 .inputGroup {
@@ -86,22 +91,22 @@ input:focus {
 }
 
 #showPasswordToggle {
-  display: block;
   padding: 0 0 0 1.45em;
   position: absolute;
   top: .25em;
   right: 0;
   font-size: 1em;
-  display: flex;
+  display: none;
 }
-
+/*
 #showPasswordCheck {
   height: .85em;
   width: .85em;
-  background-color: var(--darkblue);
-  border: solid 2px var(--darkblue);
+  background-color: var(--inputBG);
+  border: solid 2px var(--darkBlue);
   border-radius: 3px;
   padding: 0;
   appearance: unset;
 }
+*/
 

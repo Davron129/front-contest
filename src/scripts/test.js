@@ -141,14 +141,3 @@ export function handleRegister(name, username, password) {
 export function handleLogout(field) {
     localStorage.removeItem(field);
 }
-
-const button = document.getElementById("button");
-console.log(button)
-
-button.addEventListener("click", () => {
-    console.log(getRatingsByLevel("hard"));
-})
-
-
-// console.log(getWordsByLevel("medium"))
-// addToRating("davron", "medium", 10)

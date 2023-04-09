@@ -42,9 +42,10 @@ body {
 .btn--blue{
   background-color: var(--medBlue);
   color: #FFF;
+  cursor: pointer;
 }
 
 .btn--blue:hover,
 .btn--blue:active {
-  background-color: var(--darkblue);
+  background-color: var(--darkBlue);
 }
