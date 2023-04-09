@@ -109,11 +109,8 @@ export function getRatingsByLevel(level) {
 export function handleLogin(username, password) {
   const users = get(USERS);
 
-  const filteredUser = users.filter(
-    (user) => user.username === username && user.password === password
-  );
-  console.log(filteredUser, "sasas");
-  const isExists = filteredUser.length > 0;
+    const filteredUser = users.filter((user) => user.username === username && user.password === password);
+    const isExists = filteredUser.length > 0;
 
   if (isExists) {
     const curUser = filteredUser[0];
@@ -167,6 +164,16 @@ export function handleRegister(name, username, password) {
  *
  * @param {string} field
  */
-export function handleLogout(field) {
-  localStorage.removeItem(field);
+export function handleLogout() {
+    localStorage.removeItem(CUR_USER);
+
+    // window.location.href = '/signup.html'
+}
+
+const logoutBtn = document.getElementById("logoutBtn");
+
+if(logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+        handleLogout()
+    })
 }
