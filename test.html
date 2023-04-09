@@ -43,7 +43,7 @@
 
             <div class="main__wrapper">
                 <h1 class="title mb-30">
-                    Test
+                    Time
                 </h1>
 
                 <div class="timeframe">
@@ -154,26 +154,31 @@
         if(testWrapper) {
           testWrapper.innerHTML = renderAnswers.join("")
         }
+        const slowLord = document.querySelector(".icon .slow")
+        const mediumLord = document.querySelector(".icon .medium")
+        const fastLord = document.querySelector(".icon .fast")
     
         const userInfo = document.getElementById('userInfo');
         userInfo.innerText = user.name;
         let time = 0;
         let int = setInterval(()=>{
-          if(time == 2){
-            document.querySelector(".icon .slow").style.opacity = 0;
-            document.querySelector(".icon .medium").style.opacity = 1;
-          } else if(time == 7){
-            document.querySelector(".icon .medium").style.opacity = 0;
-            document.querySelector(".icon .fast").style.opacity = 1;
-          } else if(time == 12){
-            document.querySelector(".icon .fast").style.opacity = 0;
+          if (time < 41) {
+            document.querySelector("#time_left span").textContent = time;
+          }
+          if(time == 10){
+            slowLord.style.opacity = 0;
+            mediumLord.style.opacity = 1;
+          } else if(time == 30){
+            mediumLord.style.opacity = 0;
+            fastLord.style.opacity = 1;
+          } else if(time == 40){
+            fastLord.style.opacity = 0;
             clearInterval(int);
             console.log("finish");
           }
+          
           time ++;
-          if (time < 13) {
-            document.querySelector("#time_left span").textContent = time;
-          }
+
         }, 1000)
     </script>
 </body>

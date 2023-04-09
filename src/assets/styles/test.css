@@ -42,8 +42,8 @@
     position: absolute;
     bottom: 20px;
     left: 0;
-    animation: move 12s linear forwards;
-    animation-delay: 0;
+    animation: move 40s linear forwards;
+    animation-delay: 1s;
     transform: translate(-50%, 0);
     transition: 0.3s;
 }
