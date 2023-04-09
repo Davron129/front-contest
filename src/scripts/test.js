@@ -10,14 +10,14 @@ const CUR_USER = 'curUser';
  * @param {string} field 
  * @returns {Array}
  */
-function get(field) {
+function get(field, defaultValue = []) {
     const result = localStorage.getItem(field);
 
     if(result) {
         return JSON.parse(result);
     }
 
-    return [];
+    return defaultValue;
 }
 
 /**
@@ -116,6 +116,12 @@ export function handleLogin(username, password) {
     }
 
     return isExists;
+}
+
+export function isLogged() {
+    const curUser = get(CUR_USER, false);
+
+    return curUser
 }
 
 /**
