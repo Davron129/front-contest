@@ -126,7 +126,20 @@
     <script type="module">
       'use strict'
       import { isLogged, addToRating, handleLogin, handleRegister, getQuestionsByLevel, handleLogout, reorderArrayRandomly } from './src/scripts/test.js';
-  
+      import { confetti } from './src/utils/confetti.js'
+
+      const start = () => {
+            setTimeout(function() {
+                confetti.start()
+            }, 1000); // 1000 is time that after 1 second start the confetti ( 1000 = 1 sec)
+      };
+
+      const stop = () => {
+          setTimeout(function() {
+              confetti.stop()
+          }, 5000); // 5000 is time that after 5 second stop the confetti ( 5000 = 5 sec)
+      };
+
       const user = isLogged();
       if(!user) {
         window.location.href = '/signup.html'
@@ -139,16 +152,24 @@
       let score = 0;
 
       function playAudio(isCorrect) {
-            const audio = document.createElement('audio')
-            if(isCorrect) {
-              audio.src = './src/assets/audio/correct.mp3'
-            } else {
-              audio.src = './src/assets/audio/incorrect.mp3'
-            }
+          const audio = document.createElement('audio')
+          if(isCorrect) {
+            audio.src = './src/assets/audio/correct.mp3'
+          } else {
+            audio.src = './src/assets/audio/incorrect.mp3'
+          }
 
-            audio.play();
-            audio.remove();
-        }
+          audio.play();
+          audio.remove();
+      }
+
+      function playApplause() {
+        const audio = document.createElement('audio')
+        audio.src = './src/assets/audio/applause.wav'
+
+        audio.play();
+        audio.remove();
+      }
 
       const userInfo = document.getElementById("userInfo");
       userInfo.innerText = user.name;
@@ -236,7 +257,7 @@
             const finalScore = document.getElementById("score");
             finalScore.innerText = [score, " / ", 10].join("");
   
-            addToRating(user.username, level, score)          
+            addToRating(user.username, level, score);
           }
           time++;
           if (time < 41) {
@@ -275,7 +296,11 @@
             const finalScore = document.getElementById("score");
             finalScore.innerText = [score, " / ", 10].join("");
 
-            addToRating(user.username, level, score)          
+            addToRating(user.username, level, score);
+            
+            start();
+            playApplause()
+            stop();
           }
         })
     </script>
