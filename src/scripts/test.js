@@ -125,13 +125,17 @@ export function handleRegister(name, username, password) {
         return false;
     }
 
+    const users = get(USERS);
+
     const curUser = {
         name,
         username,
         password
     }
 
-    set(CUR_USER, curUser);
+    users.push(curUser)
+
+    set(CUR_USER, users);
 }
 
 export function handleLogout(field) {
