@@ -55,7 +55,8 @@
 
   <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
   <script type="module">
-    import { handleLogin, handleRegister, isLogged } from "./src/scripts/test.js";
+    import { handleLogin, handleRegister, isLogged, handleLogout } from "./src/scripts/test.js";
+    handleLogout()
     let form = document.querySelector("form");
 
     form.addEventListener("submit", e=>{

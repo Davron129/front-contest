@@ -26,124 +26,119 @@
                     <a href="/test.html" class="sidebar__link sidebar__link-active">TEST</a>
                 </li>
                 <li class="sidebar__item">
-                    <a href="#" class="sidebar__link" id="logoutBtn">LOGOUT</a>
+                    <a href="/signup.html" class="sidebar__link" id="logoutBtn">LOGOUT</a>
                 </li>
             </ul>
             </nav>
         </aside>
         <main>
-            <header class="header">
-                <div class="header__info">
+          <header class="header">
+              <div class="header__info">
+                <lord-icon
+                    src="https://cdn.lordicon.com/pithnlch.json"
+                    trigger="hover"
+                    style="width:50px;height:50px">
+                </lord-icon>
+                  <!-- <div class="avatar">
+                      <img src="./src/assets/img/kangaroo.png" alt="User avatar">
+                  </div> -->
+                  <div class="user__info" id="userInfo" ></div>
+              </div>
+          </header>
+
+          <div class="main__wrapper">
+            <div class="main__container main__container-invisible">
+              <div class="mini-header">
+                <h1 class="title">Time:</h1>
+              </div>
+
+              <div class="timeframe">
+                <div class="icon">
                   <lord-icon
-                      src="https://cdn.lordicon.com/pithnlch.json"
-                      trigger="hover"
-                      style="width:50px;height:50px">
+                    class="slow"
+                    src="https://cdn.lordicon.com/ippkhukl.json"
+                    trigger="loop"
+                    style="width: 80px; height: 80px">
                   </lord-icon>
-                    <!-- <div class="avatar">
-                        <img src="./src/assets/img/kangaroo.png" alt="User avatar">
-                    </div> -->
-                    <div class="user__info" id="userInfo" ></div>
+                  <lord-icon
+                    class="medium"
+                    src="https://cdn.lordicon.com/fvkdonkw.json"
+                    trigger="loop"
+                    style="width: 80px; height: 80px; opacity: 0">
+                  </lord-icon>
+                  <lord-icon
+                    class="fast"
+                    src="https://cdn.lordicon.com/hovbgwmd.json"
+                    trigger="loop"
+                    style="width: 80px; height: 80px; opacity: 0">
+                  </lord-icon>
                 </div>
-            </header>
+                <div id="time_left">
+                  <span>0</span>
+                </div>
+              </div>
+  
+              <div class="card">
+                <div class="card__header">
+                  <div class="card__title">Test</div>
+                </div>
+  
+                <div class="card__body" id="testWrapper"></div>
+              </div>
+            </div>
 
-        <div class="main__wrapper">
-          <div class="mini-header">
-            <h1 class="title">Time:</h1>
-            <div>
-              <button id="openResultBtn">Open Result</button>
-              <button id="openLevelBtn">Open Level</button>
+            <div class="modal" id='levelModal'>
+              <div class="modal__wrapper">
+                <div class="modal__header">
+                  <span class="modal__title">Choose test level</span>
+                </div>
+                <div class="modal__body">
+                  <div class="btn__wrapper">
+                    <button id="easy-button" data-level="easy" class="leaderboard__btn levelBtn">Easy</button>
+                    <button id="medium-button" data-level="medium" class="leaderboard__btn levelBtn">
+                      Medium
+                    </button>
+                    <button id="hard-button" data-level="hard" class="leaderboard__btn levelBtn">Hard</button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+        </main>
 
-          <div class="timeframe">
-            <div class="icon">
-              <lord-icon
-                class="slow"
-                src="https://cdn.lordicon.com/ippkhukl.json"
-                trigger="loop"
-                style="width: 80px; height: 80px">
-              </lord-icon>
-              <lord-icon
-                class="medium"
-                src="https://cdn.lordicon.com/fvkdonkw.json"
-                trigger="loop"
-                style="width: 80px; height: 80px; opacity: 0">
-              </lord-icon>
-              <lord-icon
-                class="fast"
-                src="https://cdn.lordicon.com/hovbgwmd.json"
-                trigger="loop"
-                style="width: 80px; height: 80px; opacity: 0">
-              </lord-icon>
-            </div>
-            <div id="time_left">
-              <span>0</span>
-            </div>
+      <div class="modal" id='resultModal' >
+        <div class="modal__wrapper">
+          <div class="modal__header">
+            <span class="modal__title">Your score is</span>
+            <span class="close">&times;</span>
           </div>
-
-          <div class="card">
-            <div class="card__header">
-              <div class="card__title">Test</div>
-            </div>
-
-            <div class="card__body" id="testWrapper"></div>
+          <div class="modal__body">
+            <span id="score">0</span>
           </div>
-        </div>
-      </main>
-
-      <!-- The Modal -->
-      <div id="resultModal" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <p>Your score is</p>
-          <p id="score">88</p>
-          <button id="start_quiz">Start Quiz</button>
-          <button id="leaderboard">Leaderboard</button>
-        </div>
-      </div>
-
-      <div id="levelModal" class="modal">
-        <!-- Modal content -->
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <div class="level-modal">
-            <p id="leaderboard__level" class="leaderboard__level">
-              Please, select level
-            </p>
-            <div class="leaderboard__btn__list">
-              <button id="easy-button" class="leaderboard__btn">Easy</button>
-              <button id="medium-button" class="leaderboard__btn">
-                Medium
-              </button>
-              <button id="hard-button" class="leaderboard__btn">Hard</button>
-            </div>
+          <div class="modal__footer">
+            <button class="leaderboard__btn" id="start_quiz">Start Quiz</button>
+            <button class="leaderboard__btn" id="leaderboard">Leaderboard</button>
           </div>
         </div>
       </div>
     </div>
     <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
     <script type="module">
-        'use strict'
-        import { isLogged, handleLogin, handleRegister, getQuestionsByLevel, handleLogout, reorderArrayRandomly } from './src/scripts/test.js';
-    
-        const user = isLogged();
-        const questions = getQuestionsByLevel("easy");
-        const testWrapper = document.getElementById("testWrapper");
-        const rangeInput = document.getElementById("timeRange");
-    
-        const answers = questions.map(({ en, uz }) => ([
-          {
-            id: [en, uz].join(""),
-            word: en
-          },
-          {
-            id: [en, uz].join(""),
-            word: uz
-          },
-        ]));
+      'use strict'
+      import { isLogged, addToRating, handleLogin, handleRegister, getQuestionsByLevel, handleLogout, reorderArrayRandomly } from './src/scripts/test.js';
+  
+      const user = isLogged();
+      if(!user) {
+        window.location.href = '/signup.html'
+      }
+      const rangeInput = document.getElementById("timeRange");
+      const timeframe = document.querySelector(".timeframe");
+      const container = document.querySelector(".main__container");
+      
+      let level;
+      let score = 0;
 
-        function playAudio(isCorrect) {
+      function playAudio(isCorrect) {
             const audio = document.createElement('audio')
             if(isCorrect) {
               audio.src = './src/assets/audio/correct.mp3'
@@ -155,13 +150,103 @@
             audio.remove();
         }
 
+      const userInfo = document.getElementById("userInfo");
+      userInfo.innerText = user.name;
+
+      const resultModal = document.getElementById("resultModal");
+      let levelModal = document.getElementById("levelModal");
+      levelModal.style.display = "flex";
+
+      const levelBtns = document.querySelectorAll(".levelBtn")
+      const startBtn = document.getElementById("start_quiz");
+
+      levelBtns.forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          level = e.target.getAttribute('data-level');
+          levelModal.style.display = "none";
+          container.classList.remove("main__container-invisible") ;
+          renderAll(level);
+        })
+      })
+
+      startBtn.addEventListener("click", () => {
+        container.classList.add("main__container-invisible") ;
+        resultModal.style.display = "none";     
+        levelModal.style.display = "flex";
+      })
+
+      // temeout
+      function renderAll(level) {
+        const leaderboardBtn = document.getElementById("leaderboard");
+        const testWrapper = document.getElementById("testWrapper");
+
+        const questions = getQuestionsByLevel(level);
+
+        const answers = questions.map(({ en, uz }) => ([
+          {
+            id: [en, uz].join(""),
+            word: en
+          },
+          {
+            id: [en, uz].join(""),
+            word: uz
+          },
+        ]));
+
         const reorderedAnswers = reorderArrayRandomly(answers.flat());
-    
+
         const renderAnswers = reorderedAnswers.map((answer) => (`
           <div class="answerBtn" data-id="${answer.id}" > ${answer.word} </div>
         `))
-    
-        testWrapper.addEventListener("click", (e) => {
+
+        if (testWrapper) {
+          testWrapper.innerHTML = renderAnswers.join("");
+        }
+
+        // Get the <span> element that closes the modal
+        const closeElements = document.getElementsByClassName("close");
+
+        for(let i=0; i<closeElements.length; i++) {
+          closeElements[i].addEventListener("click", () => {
+              resultModal.style.display = "none";
+              levelModal.style.display = "none";
+            })
+        }
+
+        leaderboardBtn.addEventListener("click", () => {
+          window.location.href = '/leaderboard.html'
+        })
+
+
+        let time = 0;
+        const int = setInterval(() => {
+          if (time == 10) {
+            document.querySelector(".icon .slow").style.opacity = 0;
+            document.querySelector(".icon .medium").style.opacity = 1;
+          } else if (time == 30) {
+            document.querySelector(".icon .medium").style.opacity = 0;
+            document.querySelector(".icon .fast").style.opacity = 1;
+          } else if (time == 40) {
+            document.querySelector(".icon .fast").style.opacity = 0;
+            clearInterval(int);
+  
+            const disabledCount = testWrapper.querySelectorAll('.disabled').length;
+            resultModal.style.display = "flex";
+  
+            const finalScore = document.getElementById("score");
+            finalScore.innerText = [score, " / ", 10].join("");
+  
+            addToRating(user.username, level, score)          
+          }
+          time++;
+          if (time < 41) {
+            document.querySelector("#time_left span").textContent = time;
+          }
+        }, 1000);
+      }
+
+      // click handler
+      testWrapper.addEventListener("click", (e) => {
           const selected = testWrapper.querySelector(".selected");
 
           if(selected === e.target) {
@@ -173,82 +258,26 @@
             if(selected.getAttribute('data-id') === e.target.getAttribute('data-id')) {
               selected.classList.add('disabled');
               e.target.classList.add('disabled')
+              score++;
               playAudio(true)
             } else {
               playAudio(false)
             }
-            selected.classList.remove('selected')
+            selected.classList.remove('selected');
           } else {
-            e.target.classList.add('selected')
+            e.target.classList.add('selected');
           }
 
           const disabledCount = testWrapper.querySelectorAll('.disabled').length;
 
           if(disabledCount === 20) {
-            console.log("finish");
+            resultModal.style.display = "flex";
+            const finalScore = document.getElementById("score");
+            finalScore.innerText = [score, " / ", 10].join("");
+
+            addToRating(user.username, level, score)          
           }
         })
-
-      if (testWrapper) {
-        testWrapper.innerHTML = renderAnswers.join("");
-      }
-
-      const userInfo = document.getElementById("userInfo");
-      userInfo.innerText = user.name;
-
-      let resultModal = document.getElementById("resultModal");
-      let levelModal = document.getElementById("levelModal");
-
-      // Get the button that opens the modal
-      let resultBtn = document.getElementById("openResultBtn");
-      let levelBtn = document.getElementById("openLevelBtn");
-
-      // Get the <span> element that closes the modal
-      let span = document.getElementsByClassName("close")[0];
-
-      // When the user clicks the button, open the modal
-      resultBtn.addEventListener("click", () => {
-        console.log("hey");
-        resultModal.style.display = "block";
-      });
-
-      levelBtn.addEventListener("click", () => {
-        console.log("hey");
-        levelModal.style.display = "block";
-      });
-
-      // When the user clicks on <span> (x), close the modal
-      span.onclick = function () {
-        resultModal.style.display = "none";
-        levelModal.style.display = "none";
-      };
-
-      // When the user clicks anywhere outside of the modal, close it
-      window.onclick = function (event) {
-        if (event.target == resultModal || event.target == levelModal) {
-          resultModal.style.display = "none";
-          levelModal.style.display = "none";
-        }
-      };
-
-      let time = 0;
-      let int = setInterval(() => {
-        if (time == 2) {
-          document.querySelector(".icon .slow").style.opacity = 0;
-          document.querySelector(".icon .medium").style.opacity = 1;
-        } else if (time == 7) {
-          document.querySelector(".icon .medium").style.opacity = 0;
-          document.querySelector(".icon .fast").style.opacity = 1;
-        } else if (time == 12) {
-          document.querySelector(".icon .fast").style.opacity = 0;
-          clearInterval(int);
-          console.log("finish");
-        }
-        time++;
-        if (time < 13) {
-          document.querySelector("#time_left span").textContent = time;
-        }
-      }, 1000);
     </script>
 </body>
 </html>

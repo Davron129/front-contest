@@ -1,4 +1,5 @@
 @import "./global.css";
+@import url('./buttons.css');
 
 .leaderboard__header {
   display: flex;
@@ -8,76 +9,6 @@
 }
 
 .leaderboard__level {
-  font-size: 30px;
+  font-size: 20px;
   color: gray;
-}
-
-.leaderboard__btn__list {
-  display: flex;
-  justify-content: flex-end;
-  gap: 20px;
-}
-
-.leaderboard__btn {
-  padding: 12px 48px;
-  border: none;
-  color: white;
-  font-size: 20px;
-}
-
-#easy-button {
-  background-color: var(--btnGreen);
-}
-#easy-button:after {
-  box-shadow: 0 0 10px 20px var(--btnGreen);
-}
-#easy-button:active:after {
-  box-shadow: 0 0 0 0 var(--btnGreen);
-}
-
-#medium-button {
-  background-color: var(--btnBlue);
-}
-#medium-button:after {
-  box-shadow: 0 0 10px 20px var(--btnBlue);
-}
-#medium-button:active:after {
-  box-shadow: 0 0 0 0 var(--btnBlue);
-}
-
-#hard-button {
-  background-color: var(--btnRed);
-}
-#hard-button:after {
-  box-shadow: 0 0 10px 20px var(--btnRed);
-}
-#hard-button:active:after {
-  box-shadow: 0 0 0 0 var(--btnRed);
-}
-
-.leaderboard__list {
-  width: 100%;
-  margin-top: 40px;
-}
-
-.column__header {
-  font-size: 24px;
-  border-bottom: 1em solid transparent;
-  text-align: center;
-}
-
-.cell {
-  font-size: 20px;
-  text-align: center;
-}
-.cell:after {
-  height: 0.5em;
-  display: table-row;
-  content: "";
-}
-
-.cell:before {
-  height: 0.5em;
-  display: table-row;
-  content: "";
 }

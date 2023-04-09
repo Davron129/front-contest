@@ -1,18 +1,11 @@
-import { getRatingsByLevel } from "./test.js";
-
-export const showFilteredLeaderboard = (level) => {
-  // Get the leaderboard from local storage
-  const ratings = getRatingsByLevel(level);
-  // Filter the leaderboard to only show entries with the specified level
-  const filteredLeaderboard = ratings.filter((entry) => entry.level === level);
-
-  // Sort the filtered leaderboard by score in descending order
-  filteredLeaderboard.sort((a, b) => b.score - a.score);
-
+export const showFilteredLeaderboard = (ratings = [], wrapperId = "leaderboard-table") => {
   // Get a reference to the HTML table element
-  const table = document.getElementById("leaderboard-table");
+  const table = document.getElementById(wrapperId);
   const leaderboardLevel = document.getElementById("leaderboard__level");
-  leaderboardLevel.innerHTML = level.toUpperCase();
+  if(leaderboardLevel) {
+    console.log(leaderboardLevel)
+    // leaderboardLevel.innerHTML = level.toUpperCase();
+  }
 
   // Clear the existing table contents
   table.innerHTML = "";
@@ -34,7 +27,7 @@ export const showFilteredLeaderboard = (level) => {
   dateHeader.classList.add("column__header");
 
   // Add a row for each leaderboard entry
-  filteredLeaderboard.forEach((entry, index) => {
+  ratings.forEach((entry, index) => {
     const row = table.insertRow();
 
     // Add the rank column

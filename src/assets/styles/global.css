@@ -67,14 +67,6 @@ button:active:after {
   opacity: 1;
   transition: 0s;
 }
-.about__container {
-}
-
-.about__header {
-}
-
-.about__paragraph {
-}
 
 .btn {
   cursor: pointer;
@@ -205,6 +197,7 @@ ol {
 
 .main__wrapper {
   padding: 20px 40px;
+  position: relative;
 }
 
 .title {
@@ -235,4 +228,47 @@ ol {
 
 .card__body {
   padding: 20px;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.w-sm {
+  width: 320px;
+}
+
+.w-md {
+  width: 576px;
+}
+
+table {
+  width: 100%;
+}
+
+.leaderboard__list {
+  width: 100%;
+  margin-top: 40px;
+}
+
+.column__header {
+  font-size: 24px;
+  border-bottom: 1em solid transparent;
+  text-align: center;
+}
+
+.cell {
+  font-size: 20px;
+  text-align: center;
+}
+.cell:after {
+  height: 0.5em;
+  display: table-row;
+  content: "";
+}
+
+.cell:before {
+  height: 0.5em;
+  display: table-row;
+  content: "";
 }
