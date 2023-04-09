@@ -1,4 +1,4 @@
-[
+export const data = [
     {
         "level": "easy",
         "words":  ["Car", "Mashina"]
