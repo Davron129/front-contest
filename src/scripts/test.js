@@ -1,4 +1,4 @@
-const data = require("./db.json")
+const data = require("../store/db.json")
 
 /**
  * 
@@ -22,6 +22,8 @@ const getWordsByLevel = (level) => {
 
     return result;
 }
+
+
 
 
 
