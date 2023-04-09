@@ -15,7 +15,7 @@
 body {
   background-color: #eff3f4;
   position: relative;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   font-size: 16px;
   font-family: sans-serif;
@@ -24,6 +24,7 @@ body {
 
 
 .btn {
+  cursor: pointer;
   display: block;
   margin: 0;
   padding: .65em 1em 1em;
@@ -42,7 +43,6 @@ body {
 .btn--blue{
   background-color: var(--medBlue);
   color: #FFF;
-  cursor: pointer;
 }
 
 .btn--blue:hover,
