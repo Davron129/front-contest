@@ -43,15 +43,15 @@
 
             <div class="main__wrapper">
                 <h1 class="title mb-30">
-                    My Statistics
+                    Test
                 </h1>
 
                 <div class="card">
                     <div class="card__header">
-                        <div class="card__title">History</div>
+                        <div class="card__title">Test</div>
                     </div>
 
-                    <div class="card__body">
+                    <div class="card__body" id="testWrapper" >
 
                     </div>
                 </div>
@@ -61,12 +61,35 @@
 </body>
 <script type="module">
     'use strict'
-    import { isLogged, handleLogin, handleRegister } from './src/scripts/test.js';
+    import { isLogged, handleLogin, handleRegister, getQuestionsByLevel } from './src/scripts/test.js';
 
     handleRegister("Davron Normo'minov", "davron129", "pwd")
     handleLogin("davron129", "pwd");
 
     const user = isLogged();
+    const questions = getQuestionsByLevel("easy");
+    const testWrapper = document.getElementById("testWrapper");
+
+    const answers = questions.map(({ en, uz }) => ([
+      {
+        id: [en, uz].join(""),
+        word: en
+      },
+      {
+        id: ["_", en, uz].join(""),
+        word: uz
+      },
+    ]));
+
+    const renderAnswers = answers.flat().map((answer) => (`
+      <div> ${answer.word} </div>
+    `))
+
+    if(testWrapper) {
+      testWrapper.innerHTML = renderAnswers.join("")
+    }
+
+    console.log(answers.flat())
 
     const userInfo = document.getElementById('userInfo');
     userInfo.innerText = user.name 

@@ -110,7 +110,6 @@ export function handleLogin(username, password) {
     const users = get(USERS);
 
     const filteredUser = users.filter((user) => user.username === username && user.password === password);
-console.log(filteredUser, "sasas")
     const isExists = filteredUser.length > 0;
 
     if(isExists) {
