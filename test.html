@@ -46,7 +46,7 @@
                     Test
                 </h1>
 
-                <input type="range" name="" id="">
+                <input type="range" id="timeRange" value="0">
 
                 <div class="card">
                     <div class="card__header">
@@ -62,11 +62,12 @@
     </div>
     <script type="module">
         'use strict'
-        import { isLogged, handleLogin, handleRegister, getQuestionsByLevel, handleLogout } from './src/scripts/test.js';
+        import { isLogged, handleLogin, handleRegister, getQuestionsByLevel, handleLogout, reorderArrayRandomly } from './src/scripts/test.js';
     
         const user = isLogged();
         const questions = getQuestionsByLevel("easy");
         const testWrapper = document.getElementById("testWrapper");
+        const rangeInput = document.getElementById("timeRange");
     
         const answers = questions.map(({ en, uz }) => ([
           {
@@ -78,8 +79,22 @@
             word: uz
           },
         ]));
+
+        function playAudio(isCorrect) {
+            const audio = document.createElement('audio')
+            if(isCorrect) {
+              audio.src = './src/assets/audio/correct.mp3'
+            } else {
+              audio.src = './src/assets/audio/incorrect.mp3'
+            }
+
+            audio.play();
+            audio.remove();
+        }
+
+        const reorderedAnswers = reorderArrayRandomly(answers.flat());
     
-        const renderAnswers = answers.flat().map((answer) => (`
+        const renderAnswers = reorderedAnswers.map((answer) => (`
           <div class="answerBtn" data-id="${answer.id}" > ${answer.word} </div>
         `))
     
@@ -95,6 +110,9 @@
             if(selected.getAttribute('data-id') === e.target.getAttribute('data-id')) {
               selected.classList.add('disabled');
               e.target.classList.add('disabled')
+              playAudio(true)
+            } else {
+              playAudio(false)
             }
             selected.classList.remove('selected')
           } else {
@@ -106,7 +124,6 @@
           if(disabledCount === 20) {
             console.log("finish");
           }
-
         })
     
         if(testWrapper) {

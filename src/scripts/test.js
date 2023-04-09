@@ -177,3 +177,12 @@ if(logoutBtn) {
         handleLogout()
     })
 }
+
+export function reorderArrayRandomly(arr) {
+  const newArray = [...arr]; // create a copy of the original array to avoid modifying it directly
+  for (let i = newArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1)); // get a random index within the remaining unshuffled portion of the array
+    [newArray[i], newArray[j]] = [newArray[j], newArray[i]]; // swap the elements at the current index and the randomly chosen index
+  }
+  return newArray;
+}
