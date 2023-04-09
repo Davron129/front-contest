@@ -12,7 +12,7 @@
 
 <body>
   <div class="form_error hidden">Something went wrong!</div>
-  <form class="register_form">
+  <form class="login_form">
     <div class="svgContainer">
       <lord-icon 
         class="login_icon"
@@ -57,10 +57,7 @@
   <script type="module">
     import { handleLogin, handleRegister, isLogged } from "./src/scripts/test.js";
     let form = document.querySelector("form");
-    let is_logged = isLogged();
-    if(is_logged){
-      toggle_forms(true)
-    }
+
     form.addEventListener("submit", e=>{
       e.preventDefault();
       let name = form.querySelector("#name").value;
