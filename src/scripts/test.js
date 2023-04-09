@@ -110,7 +110,7 @@ export function handleLogin(username, password) {
     const users = get(USERS);
 
     const filteredUser = users.filter((user) => user.username === username && user.password === password);
-
+console.log(filteredUser, "sasas")
     const isExists = filteredUser.length > 0;
 
     if(isExists) {
@@ -154,8 +154,8 @@ export function handleRegister(name, username, password) {
 
     users.push(curUser)
 
-    set(CUR_USER, users);
-    console.log(get(CUR_USER))
+    set(USERS, users);
+    set(CUR_USER, curUser);
 
     return true;
 }
