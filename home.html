@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./src/assets/styles/global.css">
     <link rel="stylesheet" href="./src/assets/styles/home.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <title>Home</title>
 </head>
 <body>
@@ -17,13 +19,13 @@
             <nav class="sidebar__nav">
                 <ul class="sidebar__menu">
                     <li class="sidebar__item">
-                        <a href="#" class="sidebar__link sidebar__link-active">HOME</a>
+                        <a href="/home.html" class="sidebar__link sidebar__link-active">HOME</a>
                     </li>
                     <li class="sidebar__item">
-                        <a href="#" class="sidebar__link">LEADERBOARD</a>
+                        <a href="/leaderboard.html" class="sidebar__link">LEADERBOARD</a>
                     </li>
                     <li class="sidebar__item">
-                        <a href="#" class="sidebar__link">TEST</a>
+                        <a href="/test.html" class="sidebar__link">TEST</a>
                     </li>
                     <li class="sidebar__item">
                         <a href="#" class="sidebar__link">LOGOUT</a>
@@ -51,7 +53,7 @@
                         <div class="card__title">History</div>
                     </div>
 
-                    <div class="card__body">
+                    <div class="card__body" id="ratingsContainer">
 
                     </div>
                 </div>
@@ -61,12 +63,31 @@
 </body>
 <script type="module">
     'use strict'
-    import { isLogged, handleLogin, handleRegister } from './src/scripts/test.js';
-
-    handleRegister("Davron Normo'minov", "davron129", "pwd")
-    handleLogin("davron129", "pwd");
+    import { isLogged, getRatingsByLevel } from './src/scripts/test.js';
 
     const user = isLogged();
+    const ratings = getRatingsByLevel("medium");
+
+    const ratingsContainer = document.getElementById("ratingsContainer");
+
+    if(ratingsContainer) {
+        const ratingsTable = ratings.map((rating) => (`
+            <tr>
+                <td>${ rating.username }</td>
+                <td>${ rating.level }</td>
+                <td>${ rating.score }</td>
+                <td>${ rating.time }</td>
+            </tr>
+            `)
+        )
+
+        ratingsContainer.innerHTML = `
+            <table width="100%" class"table">
+                ${ ratingsTable.join("\n") }    
+            </table>
+        `
+        console.log(ratings)
+    }
 
     const userInfo = document.getElementById('userInfo');
     userInfo.innerText = user.name 
