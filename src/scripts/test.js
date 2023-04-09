@@ -10,14 +10,14 @@ const CUR_USER = 'curUser';
  * @param {string} field 
  * @returns {Array}
  */
-function get(field) {
+function get(field, defaultValue = []) {
     const result = localStorage.getItem(field);
 
     if(result) {
         return JSON.parse(result);
     }
 
-    return [];
+    return defaultValue;
 }
 
 /**
@@ -118,6 +118,19 @@ export function handleLogin(username, password) {
     return isExists;
 }
 
+export function isLogged() {
+    const curUser = get(CUR_USER, false);
+
+    return curUser
+}
+
+/**
+ * 
+ * @param {string} name 
+ * @param {string} username 
+ * @param {string} password 
+ * @returns 
+ */
 export function handleRegister(name, username, password) {
     const isExists = handleLogin(username, password);
 
@@ -136,8 +149,14 @@ export function handleRegister(name, username, password) {
     users.push(curUser)
 
     set(CUR_USER, users);
+
+    return true;
 }
 
+/**
+ * 
+ * @param {string} field 
+ */
 export function handleLogout(field) {
     localStorage.removeItem(field);
 }
