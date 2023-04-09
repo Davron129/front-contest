@@ -100,6 +100,12 @@ export function getRatingsByLevel(level) {
   return ratings.filter((rating) => rating.level === level);
 }
 
+export function getRatingsByUsername(username) {
+  const ratings = get(RATINGS);
+
+  return ratings.filter((rating) => rating.username === username);
+}
+
 /**
  *
  * @param {string} username

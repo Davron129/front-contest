@@ -23,11 +23,8 @@
             <li class="sidebar__item">
               <a href="./test.html" class="sidebar__link">TEST</a>
             </li>
-             <li class="sidebar__item">
-              <a href="./about.html" class="sidebar__link">ABOUT US</a>
-            </li>
             <li class="sidebar__item">
-              <a href="#" class="sidebar__link">LOGOUT</a>
+              <a href="/signup.html" class="sidebar__link">LOGOUT</a>
             </li>
           </ul>
         </nav>
@@ -52,7 +49,6 @@
           </div>
         </header>
          <div class="main__wrapper">
-          <h1 class="title mb-30">My Statistics</h1>
           <div class="card">
             <div class="card__header">
               <div class="card__title">Leaderboard</div>
@@ -81,6 +77,7 @@
         isLogged,
         handleLogin,
         handleRegister,
+        getRatingsByLevel
       } from "./src/scripts/test.js";
       import {
         easyButton,
@@ -89,24 +86,30 @@
         showFilteredLeaderboard
       } from "./src/scripts/render.js";
 
-    showFilteredLeaderboard("easy");
+    const user = isLogged();
+    if(!user) {
+      window.location.href = '/signup.html'
+    }
+    const leadderBoardLevel = document.getElementById("leaderboard__level");
+
+    showFilteredLeaderboard(getRatingsByLevel('easy'), );
+    leadderBoardLevel.innerText = "Easy";
 
       easyButton.addEventListener("click", () => {
-        showFilteredLeaderboard("easy");
+        showFilteredLeaderboard(getRatingsByLevel('easy'), );
+        leadderBoardLevel.innerText = "Easy";
       });
 
       mediumButton.addEventListener("click", () => {
-        showFilteredLeaderboard("medium");
+        showFilteredLeaderboard(getRatingsByLevel('medium'), );
+        leadderBoardLevel.innerText = "Medium";
       });
 
       hardButton.addEventListener("click", () => {
-        showFilteredLeaderboard("hard");
+        showFilteredLeaderboard(getRatingsByLevel('hard'), );
+        leadderBoardLevel.innerText = "Hard";
       });
 
-      handleRegister("Davron Normo'minov", "davron129", "pwd");
-      handleLogin("davron129", "pwd");
-
-      const user = isLogged();
 
       const userInfo = document.getElementById("userInfo");
       userInfo.innerText = user.name;

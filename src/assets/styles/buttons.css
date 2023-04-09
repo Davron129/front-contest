@@ -1,0 +1,48 @@
+
+.leaderboard__btn__list {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+  }
+  
+  .leaderboard__btn {
+    padding: 10px 20px;
+    border: none;
+    background: linear-gradient(0deg, #3BC76B, #3BC76B), #3BC76B;
+    box-shadow: 0px 5px 20px rgba(71, 155, 78, 0.15);
+    border-radius: 54px;
+    font-size: 16px;
+    line-height: 22px;
+    color: #FFFFFF;
+  }
+  
+  #easy-button {
+    background-color: var(--btnGreen);
+  }
+  #easy-button:after {
+    box-shadow: 0 0 10px 20px var(--btnGreen);
+  }
+  #easy-button:active:after {
+    box-shadow: 0 0 0 0 var(--btnGreen);
+  }
+  
+  #medium-button {
+    background: #419FD9;
+  }
+  #medium-button:after {
+    box-shadow: 0 0 10px 20px var(--btnBlue);
+  }
+  #medium-button:active:after {
+    box-shadow: 0 0 0 0 var(--btnBlue);
+  }
+  
+  #hard-button {
+    /* background-color: var(--btnRed); */
+    background: linear-gradient(281.43deg, #DD3073 3.04%, rgba(222, 47, 109, 0) 33.14%), linear-gradient(164.38deg, #4B64D3 4.21%, #B9328E 23.29%, rgba(185, 50, 142, 0) 40.2%), linear-gradient(217.66deg, #8940BF 7.14%, #E5365F 49.09%, #EC6937 61.36%, #F9DB81 91.92%), #262626;;
+  }
+  #hard-button:after {
+    box-shadow: 0 0 10px 20px var(--btnRed);
+  }
+  #hard-button:active:after {
+    box-shadow: 0 0 0 0 var(--btnRed);
+  }

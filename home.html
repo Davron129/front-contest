@@ -26,10 +26,7 @@
               <a href="/test.html" class="sidebar__link">TEST</a>
             </li>
             <li class="sidebar__item">
-              <a href="./about.html" class="sidebar__link">ABOUT US</a>
-            </li>
-            <li class="sidebar__item">
-              <a href="#" class="sidebar__link">LOGOUT</a>
+              <a href="/signup.html" class="sidebar__link">LOGOUT</a>
             </li>
           </ul>
         </nav>
@@ -64,7 +61,10 @@
                         <div class="card__title">History</div>
                     </div>
 
-                    <div class="card__body" id="ratingsContainer">
+                    <div class="card__body" >
+                      <table id="ratingsContainer">
+
+                      </table>
 
                     </div>
                 </div>
@@ -76,31 +76,20 @@
     </div>
   <script type="module">
     'use strict'
-    import { isLogged, getRatingsByLevel } from './src/scripts/test.js';
+    import { isLogged, getRatingsByUsername } from './src/scripts/test.js';
+    import {
+      showFilteredLeaderboard
+    } from "./src/scripts/render.js";
 
     const user = isLogged();
-    const ratings = getRatingsByLevel("medium");
+    if(!user) {
+      window.location.href = '/signup.html'
+    }
+    const ratings = getRatingsByUsername(user.username);
 
     const ratingsContainer = document.getElementById("ratingsContainer");
 
-    if(ratingsContainer) {
-        const ratingsTable = ratings.map((rating) => (`
-            <tr>
-                <td>${ rating.username }</td>
-                <td>${ rating.level }</td>
-                <td>${ rating.score }</td>
-                <td>${ rating.time }</td>
-            </tr>
-            `)
-        )
-
-        ratingsContainer.innerHTML = `
-            <table width="100%" class"table">
-                ${ ratingsTable.join("\n") }    
-            </table>
-        `
-        console.log(ratings)
-    }
+    showFilteredLeaderboard(ratings, "ratingsContainer")
 
     const userInfo = document.getElementById("userInfo");
     userInfo.innerText = user.name;
