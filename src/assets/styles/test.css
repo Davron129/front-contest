@@ -1,0 +1,24 @@
+#testWrapper {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.answerBtn {
+    padding: 10px 20px;
+    border: 1px solid;
+    user-select: none;
+    cursor: pointer;
+}
+
+.answerBtn.selected {
+    background: #000;
+    color: bisque;
+}
+
+.answerBtn.disabled {
+    background: green;
+    color: bisque;
+    pointer-events: none;
+    cursor: not-allowed;
+}
