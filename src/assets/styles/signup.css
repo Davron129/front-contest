@@ -15,7 +15,8 @@ form {
   font-family: inherit;
 }
 
-.login_form .name_input, .login_form #register,  .register_form #login{
+.login_form .name_input,
+.login_form #register, .login_form .login_btn, .register_form #login{
   display: none;
 }
 
@@ -88,14 +89,6 @@ input:focus {
   opacity: 1;
 }
 
-/* input[type="password"] {
-  padding: .4em 1em .5em;
-}
-
-.inputGroup2 input[type="text"] {
-  padding: .025em 1em 0;
-} */
-
 #showPasswordToggle {
   padding: 0 0 0 1.45em;
   position: absolute;
@@ -103,6 +96,26 @@ input:focus {
   right: 0;
   font-size: 1em;
   display: none;
+}
+
+.formButtons {
+  display: flex;
+  gap: 16px;
+}
+
+.formButtons button {
+  flex-grow: 1;
+}
+
+.form_error{
+  background-color: var(--alert);
+  padding: 16px 20px;
+  position: fixed;
+  top: 16px;
+  right: 16px;
+  border-radius: 16px;
+  color: #FFF;
+  z-index: 999;
 }
 
 /*

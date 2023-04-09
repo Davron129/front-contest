@@ -4,9 +4,10 @@
   --medBlue: #4eb8dd;
   --lightBlue: #ddf1fa;
   --inputBG: #f3fafd;
+  --alert: red;
 }
 
-*{
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -37,20 +38,36 @@ img {
   box-shadow: none;
   width: 100%;
   height: 65px;
-  font-size: 1.55em;
+  font-size: 1.5em;
   font-weight: 600;
   font-family: inherit;
   transition: background-color .2s ease-out;
+  text-decoration: none;
+  text-align: center;
 }
 
-.btn--blue{
+.btn--blue {
   background-color: var(--medBlue);
+  color: #FFF;
+}
+
+.btn--alert {
+  background-color: var(--alert);
   color: #FFF;
 }
 
 .btn--blue:hover,
 .btn--blue:active {
   background-color: var(--darkBlue);
+}
+
+.btn--alert:hover,
+.btn--alert:active {
+  background-color: var(--alert);
+}
+
+.hidden {
+  display: none !important;
 }
 
 a {
@@ -155,7 +172,6 @@ ul, ol {
   background-color: #FFFFFF;
   border-radius: 20px;
   overflow: hidden;
-  box-shadow: 0px 5px 20px rgba(49, 52, 61, 0.05);
 }
 
 .card__header {
@@ -169,26 +185,4 @@ ul, ol {
 .card__body {
   padding: 20px;
   height: 300px;
-}
-
-.table-auto {
-  width: auto;
-  margin-left: 0;
-  margin-right: 0;
-}
-.table {
-  width: 100%;
-  margin-bottom: 1rem;
-  background-color: transparent;
-  border-collapse: collapse;
-}
-.table td,
-.table th {
-  padding: 0.75rem;
-  vertical-align: top;
-  border-top: 1px solid #e2e8f0;
-}
-.table thead th {
-  vertical-align: bottom;
-  border-bottom: 2px solid #e2e8f0;
 }
