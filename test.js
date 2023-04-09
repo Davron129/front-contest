@@ -2,7 +2,7 @@ const data = require("./db.json")
 
 /**
  * 
- * @param {"easy" | "medium" | "hard"} level 
+ * @param  {"easy" | "medium" | "hard"} level 
  */
 const getWordsByLevel = (level) => {
     const questions = data.filter((question) => question.level === level);
