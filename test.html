@@ -46,7 +46,31 @@
                     Test
                 </h1>
 
-                <input type="range" id="timeRange" value="0">
+                <div class="timeframe">
+                  <div class="icon">
+                    <lord-icon
+                      class="slow"
+                      src="https://cdn.lordicon.com/ippkhukl.json"
+                      trigger="loop"
+                      style="width:80px;height:80px">
+                    </lord-icon>
+                    <lord-icon
+                      class="medium"
+                      src="https://cdn.lordicon.com/fvkdonkw.json"
+                      trigger="loop"
+                      style="width:80px;height:80px;opacity: 0;">
+                    </lord-icon>
+                    <lord-icon
+                      class="fast"
+                      src="https://cdn.lordicon.com/hovbgwmd.json"
+                      trigger="loop"
+                      style="width:80px;height:80px;opacity: 0;">
+                    </lord-icon>
+                  </div>
+                  <div id="time_left">
+                    <span>0</span>
+                  </div>
+                </div>
 
                 <div class="card">
                     <div class="card__header">
@@ -60,6 +84,7 @@
             </div>
         </main>
     </div>
+    <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
     <script type="module">
         'use strict'
         import { isLogged, handleLogin, handleRegister, getQuestionsByLevel, handleLogout, reorderArrayRandomly } from './src/scripts/test.js';
@@ -131,7 +156,25 @@
         }
     
         const userInfo = document.getElementById('userInfo');
-        userInfo.innerText = user.name 
+        userInfo.innerText = user.name;
+        let time = 0;
+        let int = setInterval(()=>{
+          if(time == 2){
+            document.querySelector(".icon .slow").style.opacity = 0;
+            document.querySelector(".icon .medium").style.opacity = 1;
+          } else if(time == 7){
+            document.querySelector(".icon .medium").style.opacity = 0;
+            document.querySelector(".icon .fast").style.opacity = 1;
+          } else if(time == 12){
+            document.querySelector(".icon .fast").style.opacity = 0;
+            clearInterval(int);
+            console.log("finish");
+          }
+          time ++;
+          if (time < 13) {
+            document.querySelector("#time_left span").textContent = time;
+          }
+        }, 1000)
     </script>
 </body>
 </html>
