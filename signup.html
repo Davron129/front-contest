@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Signup</title>
+  <link rel="stylesheet" href="signup.css">
+</head>
+
+<body>
+  <form>
+    <div class="svgContainer">
+      <lord-icon src="https://cdn.lordicon.com/dxjqoygy.json" trigger="hover" style="width:250px;height:250px"></lord-icon>
+    </div>
+
+    <div class="inputGroup inputGroup1">
+      <label for="loginEmail" id="loginEmailLabel">Email</label>
+      <input type="email" id="loginEmail" maxlength="254" />
+      <p class="helper helper1">email@domain.com</p>
+    </div>
+    <div class="inputGroup inputGroup2">
+      <label for="loginPassword" id="loginPasswordLabel">Password</label>
+      <input type="password" id="loginPassword" />
+      <label id="showPasswordToggle" for="showPasswordCheck">Show
+        <input id="showPasswordCheck" type="checkbox" />
+        <div class="indicator"></div>
+      </label>
+    </div>
+    <div class="inputGroup inputGroup3">
+      <button id="login">Log in</button>
+    </div>
+  </form>
+
+  <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+  <script src="/src/utils/signup.js"></script>
+</body>
+
+</html>
