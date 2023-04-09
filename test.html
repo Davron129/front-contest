@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./src/assets/styles/global.css">
-    <link rel="stylesheet" href="./src/assets/styles/home.css">
+    <link rel="stylesheet" href="./src/assets/styles/test.css">
     <title>Home</title>
 </head>
 <body>
@@ -26,7 +26,7 @@
                     <a href="/test.html" class="sidebar__link sidebar__link-active">TEST</a>
                 </li>
                 <li class="sidebar__item">
-                    <a href="#" class="sidebar__link">LOGOUT</a>
+                    <a href="#" class="sidebar__link" id="logoutBtn">LOGOUT</a>
                 </li>
             </ul>
             </nav>
@@ -58,41 +58,61 @@
             </div>
         </main>
     </div>
+    <script type="module">
+        'use strict'
+        import { isLogged, handleLogin, handleRegister, getQuestionsByLevel, handleLogout } from './src/scripts/test.js';
+    
+        const user = isLogged();
+        const questions = getQuestionsByLevel("easy");
+        const testWrapper = document.getElementById("testWrapper");
+    
+        const answers = questions.map(({ en, uz }) => ([
+          {
+            id: [en, uz].join(""),
+            word: en
+          },
+          {
+            id: [en, uz].join(""),
+            word: uz
+          },
+        ]));
+    
+        const renderAnswers = answers.flat().map((answer) => (`
+          <div class="answerBtn" data-id="${answer.id}" > ${answer.word} </div>
+        `))
+    
+        testWrapper.addEventListener("click", (e) => {
+          const selected = testWrapper.querySelector(".selected");
+
+          if(selected === e.target) {
+            selected.classList.remove('selected');
+            return;
+          }
+    
+          if(selected) {
+            if(selected.getAttribute('data-id') === e.target.getAttribute('data-id')) {
+              selected.classList.add('disabled');
+              e.target.classList.add('disabled')
+            }
+            selected.classList.remove('selected')
+          } else {
+            e.target.classList.add('selected')
+          }
+
+          const disabledCount = testWrapper.querySelectorAll('.disabled').length;
+
+          if(disabledCount === 20) {
+            console.log("finish");
+          }
+
+        })
+    
+        if(testWrapper) {
+          testWrapper.innerHTML = renderAnswers.join("")
+        }
+    
+        const userInfo = document.getElementById('userInfo');
+        userInfo.innerText = user.name 
+    </script>
 </body>
-<script type="module">
-    'use strict'
-    import { isLogged, handleLogin, handleRegister, getQuestionsByLevel } from './src/scripts/test.js';
-
-    handleRegister("Davron Normo'minov", "davron129", "pwd")
-    handleLogin("davron129", "pwd");
-
-    const user = isLogged();
-    const questions = getQuestionsByLevel("easy");
-    const testWrapper = document.getElementById("testWrapper");
-
-    const answers = questions.map(({ en, uz }) => ([
-      {
-        id: [en, uz].join(""),
-        word: en
-      },
-      {
-        id: ["_", en, uz].join(""),
-        word: uz
-      },
-    ]));
-
-    const renderAnswers = answers.flat().map((answer) => (`
-      <div> ${answer.word} </div>
-    `))
-
-    if(testWrapper) {
-      testWrapper.innerHTML = renderAnswers.join("")
-    }
-
-    console.log(answers.flat())
-
-    const userInfo = document.getElementById('userInfo');
-    userInfo.innerText = user.name 
-
-</script>
 </html>

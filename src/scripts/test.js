@@ -163,6 +163,16 @@ export function handleRegister(name, username, password) {
  * 
  * @param {string} field 
  */
-export function handleLogout(field) {
-    localStorage.removeItem(field);
+export function handleLogout() {
+    localStorage.removeItem(CUR_USER);
+
+    // window.location.href = '/signup.html'
+}
+
+const logoutBtn = document.getElementById("logoutBtn");
+
+if(logoutBtn) {
+    logoutBtn.addEventListener("click", () => {
+        handleLogout()
+    })
 }
