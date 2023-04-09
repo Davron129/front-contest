@@ -34,16 +34,26 @@
         <main>
             <header class="header">
                 <div class="header__info">
-                    <div class="avatar">
+                  <lord-icon
+                      src="https://cdn.lordicon.com/pithnlch.json"
+                      trigger="hover"
+                      style="width:50px;height:50px">
+                  </lord-icon>
+                    <!-- <div class="avatar">
                         <img src="./src/assets/img/kangaroo.png" alt="User avatar">
-                    </div>
+                    </div> -->
                     <div class="user__info" id="userInfo" ></div>
                 </div>
             </header>
 
         <div class="main__wrapper">
-          <button id="openResultBtn">Open Result</button>
-          <button id="openLevelBtn">Open Level</button>
+          <div class="mini-header">
+            <h1 class="title">Time:</h1>
+            <div>
+              <button id="openResultBtn">Open Result</button>
+              <button id="openLevelBtn">Open Level</button>
+            </div>
+          </div>
 
           <div class="timeframe">
             <div class="icon">
@@ -70,8 +80,6 @@
               <span>0</span>
             </div>
           </div>
-
-          <h1 class="title mb-30">Test</h1>
 
           <div class="card">
             <div class="card__header">
