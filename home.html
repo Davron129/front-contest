@@ -9,12 +9,33 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <title>Home</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="wrapper">
-        <aside class="sidebar">
-            <div class="sidebar__logo">
-                Logo
+      <aside class="sidebar">
+        <div class="sidebar__logo">Logo</div>
+        <nav class="sidebar__nav">
+          <ul class="sidebar__menu">
+            <li class="sidebar__item">
+              <a href="#" class="sidebar__link sidebar__link-active">HOME</a>
+            </li>
+            <li class="sidebar__item">
+              <a href="./leaderboard.html" class="sidebar__link">LEADERBOARD</a>
+            </li>
+            <li class="sidebar__item">
+              <a href="#" class="sidebar__link">TEST</a>
+            </li>
+            <li class="sidebar__item">
+              <a href="#" class="sidebar__link">LOGOUT</a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+      <main>
+        <header class="header">
+          <div class="header__info">
+            <div class="avatar">
+              <img src="./src/assets/img/kangaroo.png" alt="User avatar" />
             </div>
             <nav class="sidebar__nav">
                 <ul class="sidebar__menu">
@@ -58,7 +79,10 @@
                     </div>
                 </div>
             </div>
-        </main>
+            <div class="card__body"></div>
+          </div>
+        </div>
+      </main>
     </div>
 </body>
 <script type="module">
@@ -89,8 +113,7 @@
         console.log(ratings)
     }
 
-    const userInfo = document.getElementById('userInfo');
-    userInfo.innerText = user.name 
-
-</script>
+    const userInfo = document.getElementById("userInfo");
+    userInfo.innerText = user.name;
+  </script>
 </html>
