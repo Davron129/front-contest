@@ -1,8 +1,8 @@
 #testWrapper {
-    display: grid;
-    gap: 10px;
-    flex-wrap: wrap;
-    grid-template-columns: repeat(4, 1fr);
+  display: grid;
+  gap: 10px;
+  flex-wrap: wrap;
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .answerBtn {
@@ -32,11 +32,18 @@
     pointer-events: none;
     cursor: not-allowed;
 }
-.timeframe{
-    position: relative;
-    padding-top: 50px;
-    padding-bottom: 25px;
-    margin-bottom: 12px;
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 133; /* Sit on top */
+  padding-top: 200px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 .timeframe .icon lord-icon{
     position: absolute;
@@ -47,26 +54,152 @@
     transform: translate(-50%, 0);
     transition: 0.3s;
 }
-#time_left{
-    display: block;
-    width: 100%;
-    height: 5px;
-    border-radius: 20px;
-    background-color: transparent;
-    border: 1px solid #000;
-    position: relative;
+/* Modal Content */
+.modal-content {
+  width: 50%;
+  height: 400px;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
 }
-#time_left span{
-    position: absolute;
-    top: 12px;
-    right: 0;
-    color: var(--alert);
+
+/* The Close Button */
+.resultClose {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.resultClose:hover,
+.resultClose:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.levelClose {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.levelClose:hover,
+.levelClose:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.level-modal {
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.leaderboard__level {
+  text-align: center;
+  font-size: 50px;
+  color: gray;
+}
+
+.leaderboard__btn__list {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.leaderboard__btn {
+  padding: 20px 48px;
+  border: none;
+  color: white;
+  font-size: 34px;
+}
+
+#easy-button {
+  background-color: var(--btnGreen);
+}
+#easy-button:after {
+  box-shadow: 0 0 10px 20px var(--btnGreen);
+}
+#easy-button:active:after {
+  box-shadow: 0 0 0 0 var(--btnGreen);
+}
+
+#medium-button {
+  background-color: var(--btnBlue);
+}
+#medium-button:after {
+  box-shadow: 0 0 10px 20px var(--btnBlue);
+}
+#medium-button:active:after {
+  box-shadow: 0 0 0 0 var(--btnBlue);
+}
+
+#hard-button {
+  background-color: var(--btnRed);
+}
+#hard-button:after {
+  box-shadow: 0 0 10px 20px var(--btnRed);
+}
+#hard-button:active:after {
+  box-shadow: 0 0 0 0 var(--btnRed);
+}
+.timeframe {
+  position: relative;
+  padding-top: 50px;
+  padding-bottom: 25px;
+  margin-bottom: 12px;
+}
+.timeframe .icon lord-icon {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  animation: move 12s linear forwards;
+  animation-delay: 0;
+  transform: translate(-50%, 0);
+  transition: 0.3s;
+}
+#time_left {
+  display: block;
+  width: 100%;
+  height: 5px;
+  border-radius: 20px;
+  background-color: transparent;
+  border: 1px solid #000;
+  position: relative;
+}
+#time_left span {
+  position: absolute;
+  top: 12px;
+  right: 0;
+  color: var(--alert);
 }
 @keyframes move {
-    0%{
-        left: 0;
-    }
-    100%{
-        left: 97%;
-    }
+  0% {
+    left: 0;
+  }
+  100% {
+    left: 97%;
+  }
+}
+
+#score {
+  font-size: 120px;
+  font-weight: 700;
+  color: gray;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.result-content {
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
