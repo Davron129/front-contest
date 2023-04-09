@@ -29,7 +29,7 @@
   background-color: var(--btnGreen);
 }
 #easy-button:after {
-  box-shadow: 0 0 10px 40px var(--btnGreen);
+  box-shadow: 0 0 10px 20px var(--btnGreen);
 }
 #easy-button:active:after {
   box-shadow: 0 0 0 0 var(--btnGreen);
@@ -39,7 +39,7 @@
   background-color: var(--btnBlue);
 }
 #medium-button:after {
-  box-shadow: 0 0 10px 40px var(--btnBlue);
+  box-shadow: 0 0 10px 20px var(--btnBlue);
 }
 #medium-button:active:after {
   box-shadow: 0 0 0 0 var(--btnBlue);
@@ -49,7 +49,7 @@
   background-color: var(--btnRed);
 }
 #hard-button:after {
-  box-shadow: 0 0 10px 40px var(--btnRed);
+  box-shadow: 0 0 10px 20px var(--btnRed);
 }
 #hard-button:active:after {
   box-shadow: 0 0 0 0 var(--btnRed);
