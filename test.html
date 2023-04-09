@@ -1,118 +1,193 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./src/assets/styles/global.css">
-    <link rel="stylesheet" href="./src/assets/styles/test.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./src/assets/styles/global.css" />
+    <link rel="stylesheet" href="./src/assets/styles/test.css" />
     <title>Home</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="wrapper">
-        <aside class="sidebar">
-            <div class="sidebar__logo">
-                Logo
+      <aside class="sidebar">
+        <div class="sidebar__logo">Logo</div>
+        <nav class="sidebar__nav">
+          <ul class="sidebar__menu">
+            <li class="sidebar__item">
+              <a href="/home.html" class="sidebar__link">HOME</a>
+            </li>
+            <li class="sidebar__item">
+              <a href="/leaderboard.html" class="sidebar__link">LEADERBOARD</a>
+            </li>
+            <li class="sidebar__item">
+              <a href="/test.html" class="sidebar__link sidebar__link-active"
+                >TEST</a
+              >
+            </li>
+            <li class="sidebar__item">
+              <a href="#" class="sidebar__link" id="logoutBtn">LOGOUT</a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+      <main>
+        <header class="header">
+          <div class="header__info">
+            <div class="avatar">
+              <img src="./src/assets/img/kangaroo.png" alt="User avatar" />
             </div>
-            <nav class="sidebar__nav">
-              <ul class="sidebar__menu">
-                <li class="sidebar__item">
-                    <a href="/home.html" class="sidebar__link">HOME</a>
-                </li>
-                <li class="sidebar__item">
-                    <a href="/leaderboard.html" class="sidebar__link">LEADERBOARD</a>
-                </li>
-                <li class="sidebar__item">
-                    <a href="/test.html" class="sidebar__link sidebar__link-active">TEST</a>
-                </li>
-                <li class="sidebar__item">
-                    <a href="#" class="sidebar__link" id="logoutBtn">LOGOUT</a>
-                </li>
-            </ul>
-            </nav>
-        </aside>
-        <main>
-            <header class="header">
-                <div class="header__info">
-                    <div class="avatar">
-                        <img src="./src/assets/img/kangaroo.png" alt="User avatar">
-                    </div>
-                    <div class="user__info" id="userInfo" ></div>
-                </div>
-            </header>
+            <div class="user__info" id="userInfo"></div>
+          </div>
+        </header>
 
-            <div class="main__wrapper">
-                <h1 class="title mb-30">
-                    Test
-                </h1>
+        <button id="openResultBtn">Open Result</button>
+        <button id="openLevelBtn">Open Level</button>
 
-                <div class="card">
-                    <div class="card__header">
-                        <div class="card__title">Test</div>
-                    </div>
+        <!-- The Modal -->
+        <div id="resultModal" class="modal">
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <p>Your score is</p>
+            <p id="score">88</p>
+            <button id="start_quiz">Start Quiz</button>
+            <button id="leaderboard">Leaderboard</button>
+          </div>
+        </div>
 
-                    <div class="card__body" id="testWrapper" >
-
-                    </div>
-                </div>
+        <div id="levelModal" class="modal">
+          <!-- Modal content -->
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="level-modal">
+              <p id="leaderboard__level" class="leaderboard__level">
+                Please, select level
+              </p>
+              <div class="leaderboard__btn__list">
+                <button id="easy-button" class="leaderboard__btn">Easy</button>
+                <button id="medium-button" class="leaderboard__btn">
+                  Medium
+                </button>
+                <button id="hard-button" class="leaderboard__btn">Hard</button>
+              </div>
             </div>
-        </main>
+          </div>
+        </div>
+
+        <div class="main__wrapper">
+          <h1 class="title mb-30">Test</h1>
+
+          <div class="card">
+            <div class="card__header">
+              <div class="card__title">Test</div>
+            </div>
+
+            <div class="card__body" id="testWrapper"></div>
+          </div>
+        </div>
+      </main>
     </div>
     <script type="module">
-        'use strict'
-        import { isLogged, handleLogin, handleRegister, getQuestionsByLevel, handleLogout } from './src/scripts/test.js';
-    
-        const user = isLogged();
-        const questions = getQuestionsByLevel("easy");
-        const testWrapper = document.getElementById("testWrapper");
-    
-        const answers = questions.map(({ en, uz }) => ([
-          {
-            id: [en, uz].join(""),
-            word: en
-          },
-          {
-            id: [en, uz].join(""),
-            word: uz
-          },
-        ]));
-    
-        const renderAnswers = answers.flat().map((answer) => (`
+      "use strict";
+      import {
+        isLogged,
+        handleLogin,
+        handleRegister,
+        getQuestionsByLevel,
+        handleLogout,
+      } from "./src/scripts/test.js";
+
+      const user = isLogged();
+      const questions = getQuestionsByLevel("easy");
+      const testWrapper = document.getElementById("testWrapper");
+
+      const answers = questions.map(({ en, uz }) => [
+        {
+          id: [en, uz].join(""),
+          word: en,
+        },
+        {
+          id: [en, uz].join(""),
+          word: uz,
+        },
+      ]);
+
+      const renderAnswers = answers.flat().map(
+        (answer) => `
           <div class="answerBtn" data-id="${answer.id}" > ${answer.word} </div>
-        `))
-    
-        testWrapper.addEventListener("click", (e) => {
-          const selected = testWrapper.querySelector(".selected");
+        `
+      );
 
-          if(selected === e.target) {
-            selected.classList.remove('selected');
-            return;
-          }
-    
-          if(selected) {
-            if(selected.getAttribute('data-id') === e.target.getAttribute('data-id')) {
-              selected.classList.add('disabled');
-              e.target.classList.add('disabled')
-            }
-            selected.classList.remove('selected')
-          } else {
-            e.target.classList.add('selected')
-          }
+      testWrapper.addEventListener("click", (e) => {
+        const selected = testWrapper.querySelector(".selected");
 
-          const disabledCount = testWrapper.querySelectorAll('.disabled').length;
-
-          if(disabledCount === 20) {
-            console.log("finish");
-          }
-
-        })
-    
-        if(testWrapper) {
-          testWrapper.innerHTML = renderAnswers.join("")
+        if (selected === e.target) {
+          selected.classList.remove("selected");
+          return;
         }
-    
-        const userInfo = document.getElementById('userInfo');
-        userInfo.innerText = user.name 
+
+        if (selected) {
+          if (
+            selected.getAttribute("data-id") ===
+            e.target.getAttribute("data-id")
+          ) {
+            selected.classList.add("disabled");
+            e.target.classList.add("disabled");
+          }
+          selected.classList.remove("selected");
+        } else {
+          e.target.classList.add("selected");
+        }
+
+        const disabledCount = testWrapper.querySelectorAll(".disabled").length;
+
+        if (disabledCount === 20) {
+          console.log("finish");
+        }
+      });
+
+      if (testWrapper) {
+        testWrapper.innerHTML = renderAnswers.join("");
+      }
+
+      const userInfo = document.getElementById("userInfo");
+      userInfo.innerText = user.name;
+
+      let resultModal = document.getElementById("resultModal");
+      let levelModal = document.getElementById("levelModal");
+
+      // Get the button that opens the modal
+      let resultBtn = document.getElementById("openResultBtn");
+      let levelBtn = document.getElementById("openLevelBtn");
+
+      // Get the <span> element that closes the modal
+      let span = document.getElementsByClassName("close")[0];
+
+      // When the user clicks the button, open the modal
+      resultBtn.addEventListener("click", () => {
+        console.log("hey");
+        resultModal.style.display = "block";
+      });
+
+      levelBtn.addEventListener("click", () => {
+        console.log("hey");
+        levelModal.style.display = "block";
+      });
+
+      // When the user clicks on <span> (x), close the modal
+      span.onclick = function () {
+        resultModal.style.display = "none";
+        levelModal.style.display = "none";
+      };
+
+      // When the user clicks anywhere outside of the modal, close it
+      window.onclick = function (event) {
+        if (event.target == resultModal || event.target == levelModal) {
+          resultModal.style.display = "none";
+          levelModal.style.display = "none";
+        }
+      };
     </script>
-</body>
+  </body>
 </html>
