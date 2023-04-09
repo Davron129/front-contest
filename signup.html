@@ -11,33 +11,43 @@
 </head>
 
 <body>
-  <form>
+  <form class="register_form">
     <div class="svgContainer">
       <lord-icon src="https://cdn.lordicon.com/dxjqoygy.json" trigger="hover" style="width:170px;height:170px"></lord-icon>
     </div>
 
-    <div class="inputGroup inputGroup1">
-      <label for="loginUsername" id="loginUsernameLabel">Username</label>
-      <input type="text" id="loginUsername" maxlength="254" placeholder=" " />
-      <p class="helper">Enter your username</p>
+    <div class="inputGroup name_input">
+      <label for="name" id="nameLabel">Name</label>
+      <input type="text" id="name" maxlength="254" placeholder=" " required />
     </div>
-    <div class="inputGroup inputGroup2">
+    <div class="inputGroup">
+      <label for="userName" id="userNameLabel">Username</label>
+      <input type="text" id="userName" maxlength="254" placeholder=" " required />
+      <!-- <p class="helper">Enter your username</p> -->
+    </div>
+    <div class="inputGroup">
       <label for="loginPassword" id="loginPasswordLabel">Password</label>
-      <input type="password" id="loginPassword" />
+      <input type="password" id="loginPassword" required />
       <label id="showPasswordToggle" for="showPasswordCheck">Show
         <input id="showPasswordCheck" type="checkbox" />
       </label>
     </div>
-    <button id="login" class="btn btn--blue">Log in</button>
+    <button id="login" class="btn btn--blue" type="submit">Log in</button>
+    <button id="register" class="btn btn--blue" type="submit">Register</button>
   </form>
 
   <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
   <script type="module">
-    import { handleLogin } from "./src/scripts/test.js";
+    import { handleLogin, isLogged } from "./src/scripts/test.js";
     let form = document.querySelector("form");
+    if(isLogged()){
+      form.setAttribute("class", "login_form");
+    }
     form.addEventListener("submit", e=>{
       e.preventDefault();
-      let username = 
+      let name = form.querySelector("#name");
+      let username = form.querySelector("#userName");
+      let pass = form.querySelector("#password");
     });
     console.log(handleLogin("test", "test"));
 
