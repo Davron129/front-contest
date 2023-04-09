@@ -1,0 +1,142 @@
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+body {
+  background-color: #000;
+}
+
+main {
+  background: #000 url(https://media.istockphoto.com/id/165733113/vector/landscape.jpg?s=612x612&w=0&k=20&c=EIVRPe1Y_na9dZC9NII79dgN3S9B_QtW1RJBcG5G4Js=) center bottom no-repeat;
+  background-size: cover;
+  height: calc(100vh - 68px);
+  min-height: unset;
+  position: relative;
+}
+
+main::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 80%;
+  z-index: 0;
+}
+
+.navbar {
+  background-color: #000;
+  color: #fff;
+  padding: 0 30px;
+  margin: 0;
+}
+.navbar-logo{
+  font-size: 20px;
+  font-weight: 700;
+}
+.navbar__wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+}
+
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navbar-nav .btn {
+  padding: 4px 12px;
+  height: 40px;
+  font-size: 16px;
+  text-transform: uppercase;
+}
+
+main .row {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  justify-content: center;
+  gap: 120px;
+  height: 100%;
+  z-index: 999;
+  position: relative;
+  color: #e2e2e2;
+  padding: 0 30px;
+}
+
+.row .text {
+  max-width: 560px;
+}
+
+.row .text h1 {
+  font-weight: 400;
+  font-size: 40px;
+}
+
+.row .text h1 span {
+  font-weight: 700;
+  color: yellow;
+}
+
+.row .text p {
+  margin: 16px 0 25px;
+  line-height: 160%;
+}
+
+.row .text .btn {
+  max-width: 150px;
+  border-radius: 20px;
+}
+
+@media (max-width: 1200px) {
+  main .row {
+    gap: 30px;
+    padding: 40px 30px;
+  }
+
+  main .row lord-icon {
+    width: 250px !important;
+    height: 250px !important;
+  }
+}
+
+@media (max-width: 768px) {
+  main {
+    height: unset;
+  }
+
+  main .row {
+    flex-direction: column-reverse;
+  }
+
+  main .row {
+    gap: 20px;
+    text-align: center;
+  }
+
+  main .row .btn {
+    margin: auto;
+  }
+
+  main .row lord-icon {
+    width: 100px !important;
+    height: 100px !important;
+  }
+
+  .row .text h1 {
+    font-size: 30px;
+  }
+
+  .row .text p {
+    text-align: justify;
+    line-height: 120%;
+  }
+
+}
