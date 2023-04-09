@@ -24,26 +24,28 @@ export const showFilteredLeaderboard = (level) => {
 
   // Get a reference to the HTML table element
   const table = document.getElementById("leaderboard-table");
+  const leaderboardLevel = document.getElementById("leaderboard__level");
+  leaderboardLevel.innerHTML = level.toUpperCase();
 
   // Clear the existing table contents
   table.innerHTML = "";
 
   // Add a header row with the leaderboard level
   const headerRow = table.insertRow();
+  headerRow.classList.add("table__header");
   const rankHeader = headerRow.insertCell();
   const usernameHeader = headerRow.insertCell();
   const scoreHeader = headerRow.insertCell();
   const timeHeader = headerRow.insertCell();
   rankHeader.innerHTML = "Rank";
+  rankHeader.classList.add("column__header");
   usernameHeader.innerHTML = "Username";
+  usernameHeader.classList.add("column__header");
   scoreHeader.innerHTML = "Score";
+  scoreHeader.classList.add("column__header");
   timeHeader.innerHTML = "Time";
-  const leaderboardTitle = `Leaderboard: ${
-    level.charAt(0).toUpperCase() + level.slice(1)
-  }`;
-  const caption = document.createElement("caption");
-  caption.innerHTML = leaderboardTitle;
-  table.appendChild(caption);
+  timeHeader.classList.add("column__header");
+
   // Add a row for each leaderboard entry
   filteredLeaderboard.forEach((entry, index) => {
     const row = table.insertRow();
@@ -51,18 +53,20 @@ export const showFilteredLeaderboard = (level) => {
     // Add the rank column
     const rankCell = row.insertCell();
     rankCell.innerHTML = index + 1;
+    rankCell.classList.add("cell");
 
     // Add the username column
     const usernameCell = row.insertCell();
     usernameCell.innerHTML = entry.username;
-
+    usernameCell.classList.add("cell");
     // Add the score column
     const scoreCell = row.insertCell();
     scoreCell.innerHTML = entry.score;
-
+    scoreCell.classList.add("cell");
     // Add the time column
     const timeCell = row.insertCell();
     timeCell.innerHTML = entry.time;
+    timeCell.classList.add("cell");
   });
 };
 

@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./src/assets/styles/global.css" />
-    <link rel="stylesheet" href="./src/assets/styles/home.css" />
+    <link rel="stylesheet" href="./src/assets/styles/leaderboard.css" />
     <title>Leaderboard</title>
   </head>
   <body>
@@ -38,12 +38,28 @@
             <div class="user__info" id="userInfo"></div>
           </div>
         </header>
-        <div>
-            <button id="easy-button">Easy</button>
-            <button id="medium-button">Medium</button>  
-            <button id="hard-button">Hard</button>
-            <table id="leaderboard-table" class="leaderboard">
+         <div class="main__wrapper">
+          <h1 class="title mb-30">My Statistics</h1>
+          <div class="card">
+            <div class="card__header">
+              <div class="card__title">Leaderboard</div>
+            </div>
+            <div class="card__body">
+                <div class="leaderboard">
+                    <div class="leaderboard__header">
+                        <p id="leaderboard__level" class="leaderboard__level"></p>
+                        <div class="leaderboard__btn__list">
+                        <button id="easy-button" class="leaderboard__btn">Easy</button>
+                        <button id="medium-button" class="leaderboard__btn">Medium</button>  
+                        <button id="hard-button" class="leaderboard__btn">Hard</button>
+                    </div>
+                    </div>
+                    <table id="leaderboard-table" class="leaderboard__list">
+                </div>
+            </div>
+          </div>
         </div>
+       
       </main>
     </div>
     <script type="module">
@@ -59,6 +75,8 @@
         hardButton,
         showFilteredLeaderboard
       } from "./src/scripts/render.js";
+
+    showFilteredLeaderboard("easy");
 
       easyButton.addEventListener("click", () => {
         showFilteredLeaderboard("easy");
