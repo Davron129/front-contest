@@ -154,8 +154,8 @@ export function handleRegister(name, username, password) {
 
     users.push(curUser)
 
-    set(CUR_USER, users);
-    console.log(get(CUR_USER))
+    set(USERS, users);
+    set(CUR_USER, curUser);
 
     return true;
 }
