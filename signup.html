@@ -47,11 +47,10 @@
         <input id="showPasswordCheck" type="checkbox" />
       </label>
     </div>
-    <div class="formButtons">
-      <button id="login" class="btn btn--blue" type="submit">Log in</button>
-      <a href="#!" class="login_btn btn btn--blue">Log in</a>
-      <button id="register" class="btn btn--blue" type="submit">Register</button>
-    </div>
+    <button id="login" class="btn btn--blue" type="submit">Log in</button>
+    <button id="register" class="btn btn--blue" type="submit">Register</button>
+    <p class="form_callout form_callout--log">Already registered? Log in here</p>
+    <p class="form_callout form_callout--reg">Don't have an account? Register</p>
   </form>
 
   <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
@@ -60,7 +59,7 @@
     let form = document.querySelector("form");
     let is_logged = isLogged();
     if(is_logged){
-      form.setAttribute("class", "login_form");
+      toggle_forms(true)
     }
     form.addEventListener("submit", e=>{
       e.preventDefault();
@@ -95,10 +94,19 @@
       }
       window.location.href = "/";
     });
-    document.querySelector(".login_btn").addEventListener("click", e=>{
-      e.preventDefault()
-      form.setAttribute("class", "login_form");
+    document.querySelector(".form_callout--log").addEventListener("click", e=>{
+      toggle_forms(true)
     })
+    document.querySelector(".form_callout--reg").addEventListener("click", e=>{
+      toggle_forms(false)
+    })
+    function toggle_forms(log) {
+      if(log){
+        form.setAttribute("class", "login_form");
+      } else{
+        form.setAttribute("class", "register_form");
+      }
+    }
   </script>
 </body>
 
