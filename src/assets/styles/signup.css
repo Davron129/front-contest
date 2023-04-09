@@ -16,7 +16,10 @@ form {
 }
 
 .login_form .name_input,
-.login_form #register, .login_form .login_btn, .register_form #login{
+.login_form #register,
+.login_form .form_callout--log,
+.register_form #login,
+.register_form .form_callout--reg {
   display: none;
 }
 
@@ -98,16 +101,14 @@ input:focus {
   display: none;
 }
 
-.formButtons {
-  display: flex;
-  gap: 16px;
+.form_callout {
+  margin-top: 12px;
+  cursor: pointer;
+  user-select: none;
+  text-align: right;
 }
 
-.formButtons button {
-  flex-grow: 1;
-}
-
-.form_error{
+.form_error {
   background-color: var(--alert);
   padding: 16px 20px;
   position: fixed;
