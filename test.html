@@ -41,50 +41,9 @@
           </div>
         </header>
 
-        <button id="openLevelBtn">Open Level</button>
-        <button id="openResultBtn">Open Result</button>
-
-        <!-- The Modal -->
-        <div id="resultModal" class="modal">
-          <!-- Modal content -->
-          <div class="modal-content">
-            <span class="resultClose">&times;</span>
-            <div class="result-content">
-              <p class="leaderboard__level">Your score is</p>
-              <p id="score">88</p>
-              <div class="leaderboard__btn__list">
-                <button id="easy-button" class="leaderboard__btn">
-                  Start Test
-                </button>
-                <button id="medium-button" class="leaderboard__btn">
-                  Leaderboard
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div id="levelModal" class="modal">
-          <!-- Modal content -->
-          <div class="modal-content">
-            <span class="levelClose">&times;</span>
-            <div class="level-modal">
-              <p id="leaderboard__level" class="leaderboard__level">
-                Please, select level
-              </p>
-              <div class="leaderboard__btn__list">
-                <button id="easy-button" class="leaderboard__btn">Easy</button>
-                <button id="medium-button" class="leaderboard__btn">
-                  Medium
-                </button>
-                <button id="hard-button" class="leaderboard__btn">Hard</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
         <div class="main__wrapper">
-          <h1 class="title mb-30">Test</h1>
+          <button id="openResultBtn">Open Result</button>
+          <button id="openLevelBtn">Open Level</button>
 
           <div class="timeframe">
             <div class="icon">
@@ -112,6 +71,8 @@
             </div>
           </div>
 
+          <h1 class="title mb-30">Test</h1>
+
           <div class="card">
             <div class="card__header">
               <div class="card__title">Test</div>
@@ -121,6 +82,37 @@
           </div>
         </div>
       </main>
+
+      <!-- The Modal -->
+      <div id="resultModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>Your score is</p>
+          <p id="score">88</p>
+          <button id="start_quiz">Start Quiz</button>
+          <button id="leaderboard">Leaderboard</button>
+        </div>
+      </div>
+
+      <div id="levelModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <div class="level-modal">
+            <p id="leaderboard__level" class="leaderboard__level">
+              Please, select level
+            </p>
+            <div class="leaderboard__btn__list">
+              <button id="easy-button" class="leaderboard__btn">Easy</button>
+              <button id="medium-button" class="leaderboard__btn">
+                Medium
+              </button>
+              <button id="hard-button" class="leaderboard__btn">Hard</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
     <script type="module">
@@ -150,8 +142,8 @@
 
       const renderAnswers = answers.flat().map(
         (answer) => `
-          <div class="answerBtn" data-id="${answer.id}" > ${answer.word} </div>
-        `
+                <div class="answerBtn" data-id="${answer.id}" > ${answer.word} </div>
+              `
       );
 
       testWrapper.addEventListener("click", (e) => {
@@ -186,6 +178,9 @@
         testWrapper.innerHTML = renderAnswers.join("");
       }
 
+      const userInfo = document.getElementById("userInfo");
+      userInfo.innerText = user.name;
+
       let resultModal = document.getElementById("resultModal");
       let levelModal = document.getElementById("levelModal");
 
@@ -194,11 +189,11 @@
       let levelBtn = document.getElementById("openLevelBtn");
 
       // Get the <span> element that closes the modal
-      let resultClose = document.getElementsByClassName("resultClose")[0];
-      let levelClose = document.getElementsByClassName("levelClose")[0];
+      let span = document.getElementsByClassName("close")[0];
 
       // When the user clicks the button, open the modal
       resultBtn.addEventListener("click", () => {
+        console.log("hey");
         resultModal.style.display = "block";
       });
 
@@ -208,11 +203,8 @@
       });
 
       // When the user clicks on <span> (x), close the modal
-      resultClose.onclick = function () {
+      span.onclick = function () {
         resultModal.style.display = "none";
-      };
-
-      levelClose.onclick = function () {
         levelModal.style.display = "none";
       };
 
@@ -224,8 +216,6 @@
         }
       };
 
-      const userInfo = document.getElementById("userInfo");
-      userInfo.innerText = user.name;
       let time = 0;
       let int = setInterval(() => {
         if (time == 2) {
@@ -238,7 +228,6 @@
           document.querySelector(".icon .fast").style.opacity = 0;
           clearInterval(int);
           console.log("finish");
-          resultModal.style.display = "block";
         }
         time++;
         if (time < 13) {

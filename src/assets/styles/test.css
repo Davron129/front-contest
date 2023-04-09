@@ -53,29 +53,15 @@
 }
 
 /* The Close Button */
-.resultClose {
+.close {
   color: #aaaaaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
 }
 
-.resultClose:hover,
-.resultClose:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.levelClose {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.levelClose:hover,
-.levelClose:focus {
+.close:hover,
+.close:focus {
   color: #000;
   text-decoration: none;
   cursor: pointer;
@@ -86,26 +72,27 @@
   height: 80%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
 }
 
 .leaderboard__level {
+  margin-top: 60px;
+  margin-bottom: 40px;
   text-align: center;
-  font-size: 50px;
+  font-size: 30px;
   color: gray;
 }
 
 .leaderboard__btn__list {
   display: flex;
   justify-content: center;
-  gap: 30px;
+  gap: 20px;
 }
 
 .leaderboard__btn {
-  padding: 20px 48px;
+  padding: 12px 48px;
   border: none;
   color: white;
-  font-size: 34px;
+  font-size: 20px;
 }
 
 #easy-button {
@@ -137,6 +124,7 @@
 #hard-button:active:after {
   box-shadow: 0 0 0 0 var(--btnRed);
 }
+
 .timeframe {
   position: relative;
   padding-top: 50px;
@@ -174,20 +162,4 @@
   100% {
     left: 97%;
   }
-}
-
-#score {
-  font-size: 120px;
-  font-weight: 700;
-  color: gray;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-.result-content {
-  margin-top: 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 }

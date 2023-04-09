@@ -67,6 +67,14 @@ button:active:after {
   opacity: 1;
   transition: 0s;
 }
+.about__container {
+}
+
+.about__header {
+}
+
+.about__paragraph {
+}
 
 .btn {
   cursor: pointer;
