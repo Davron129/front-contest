@@ -118,6 +118,13 @@ export function handleLogin(username, password) {
     return isExists;
 }
 
+/**
+ * 
+ * @param {string} name 
+ * @param {string} username 
+ * @param {string} password 
+ * @returns 
+ */
 export function handleRegister(name, username, password) {
     const isExists = handleLogin(username, password);
 
@@ -136,8 +143,14 @@ export function handleRegister(name, username, password) {
     users.push(curUser)
 
     set(CUR_USER, users);
+
+    return true;
 }
 
+/**
+ * 
+ * @param {string} field 
+ */
 export function handleLogout(field) {
     localStorage.removeItem(field);
 }
